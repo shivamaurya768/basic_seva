@@ -1,0 +1,74 @@
+CREATE TABLE IF NOT EXISTS employees (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    -- Personal Info
+    name VARCHAR(100) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    gender VARCHAR(20) NOT NULL,
+    marital_status VARCHAR(20),
+    nationality VARCHAR(50) DEFAULT 'Indian',
+    profile_photo VARCHAR(255),
+    
+    -- Contact Info
+    mobile VARCHAR(15) NOT NULL,
+    alternate_mobile VARCHAR(15),
+    email VARCHAR(100) NOT NULL,
+    whatsapp VARCHAR(15),
+    address_line1 VARCHAR(255) NOT NULL,
+    address_line2 VARCHAR(255),
+    city VARCHAR(100) NOT NULL,
+    state VARCHAR(100) NOT NULL,
+    pin_code VARCHAR(10) NOT NULL,
+    
+    -- Work Details
+    job_role VARCHAR(100) NOT NULL,
+    department VARCHAR(100),
+    employment_type VARCHAR(50),
+    joining_date DATE,
+    expected_salary DECIMAL(10,2),
+    work_location VARCHAR(100),
+    
+    -- Education
+    highest_qualification VARCHAR(100),
+    specialisation VARCHAR(100),
+    passing_year INT,
+    
+    -- Experience
+    total_experience VARCHAR(50),
+    previous_employer VARCHAR(255),
+    work_description TEXT,
+    
+    -- Skills & Languages (stored as JSON)
+    skills TEXT,
+    languages TEXT,
+    custom_skills TEXT,
+    
+    -- Documents (stored as JSON paths)
+    aadhar_front VARCHAR(255),
+    aadhar_back VARCHAR(255),
+    pan_card VARCHAR(255),
+    voter_id VARCHAR(255),
+    resume VARCHAR(255),
+    experience_certificate VARCHAR(255),
+    educational_certificate VARCHAR(255),
+    skill_certificate VARCHAR(255),
+    passbook_cheque VARCHAR(255),
+    
+    -- Legal & Bank
+    aadhar_number VARCHAR(12),
+    pan_number VARCHAR(10),
+    account_holder_name VARCHAR(100),
+    bank_name VARCHAR(100),
+    account_number VARCHAR(20),
+    ifsc_code VARCHAR(11),
+    account_type VARCHAR(50),
+    declaration_accepted BOOLEAN DEFAULT FALSE,
+    
+    -- Meta
+    ip_address VARCHAR(45),
+    user_agent TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    INDEX idx_employee_id (employee_id),
+    INDEX idx_mobile (mobile),
+    INDEX idx_email (email)
+);

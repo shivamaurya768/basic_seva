@@ -43,7 +43,7 @@
 				<!-- <option value="admin">Admin</option> -->
 				<option value="Employee">Employee</option>
 				<option value="Customer">Customer</option>
-
+                <option value="Admin">Admin</option>
 			</select><br><br>
 			<button type="submit" name="signup">sign Up </button>
 		</form>
@@ -143,6 +143,8 @@ if(isset($_POST['signup'])) {
                         header("Location: index.php");
                         }else if($user['Role']=='Employee'){
                             header("Location: employee.php");
+                        }else if($user['Role']=='Admin'){
+                            header("Location: admin/admin_index.php");
                         }
                         // echo "successful login";
                         exit();

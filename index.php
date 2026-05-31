@@ -1,4 +1,24 @@
-git
+<?php
+    session_start();
+    require_once "db_conn.php";
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Seve</title>
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="style/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.8.0/fonts/remixicon.css"
+  rel="stylesheet"/>
+</head>
+<body>
+    <!-- header -->
+    <div id="header">
+         <?php include "include/profile.php"; ?>   
+        <?php include "include/menu.php";?>
+
     <h1 style="color:white"><br> <br>
     </h1>
 
@@ -48,7 +68,7 @@ if(!empty($_SESSION['image'])) {
             </button>
         </div>
 
-        <div id="profile-view">
+<div id="profile-view">
 <?php 
 
 if(isset($_SESSION['name'])){

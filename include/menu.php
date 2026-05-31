@@ -38,25 +38,5 @@
 
             </div>
         </div>
-    <div id="profileInfo">
-                    <?php
-                            if(isset($_SESSION['username'])) {
-                                echo '<h3>' . $_SESSION['name'] . '</h3>';
-                                echo '<p id="location"> your location </p>';
-                                echo '<p id="serviceHistory"> your services History </p>';
-                                echo '<p id="contactInfo"> your contact info </p>';
-
-                            } 
-                            // else {
-                            //     echo '<h3>Guest</h3>';
-                            //     echo '<p>Please log in to see your profile information.</p>';
-                            // }
-                        ?>
-                    
-
-                    
-                    </div>
-                    <!-- profileinfo end -->
-
 
                    

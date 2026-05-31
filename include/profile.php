@@ -13,7 +13,7 @@
                                     echo '<div id="profilePic"><img src="uploads/' . $result['image_profile'] . '" alt="Profile Picture"><span id="username">' .'Welcome, ' . $_SESSION['name'] . '</span>'.'</div>';
                             }
                              else {
-                                echo '<div id="profilePic"><img src="image/profile.jpeg" alt="" ></div>';
+                                echo '<div id="profilePic"><img src="image/profile.jpg" alt="" ></div>';
                             }
                         ?>
                         <!-- <a href="edit_profile.php"><button id="editProfileBtn"><i class="ri-edit-line"></i></button></a> -->
