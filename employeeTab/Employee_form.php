@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -418,7 +420,6 @@ body::before{
 <body>
 
 <!-- TOP NAV -->
-
 <div class="container">
   <div class="page-head">
     <h1>Employee Registration Form</h1>
@@ -458,6 +459,8 @@ body::before{
     </div>
   </div>
 
+  
+<form action="employeeTab/form.php" method="post" enctype="multipart/form-data">
   <!-- FORM CARD -->
   <div class="form-card">
 
@@ -477,7 +480,7 @@ body::before{
           <div class="section-title">Profile Photo</div>
           <div class="photo-upload">
             <div class="photo-circle" id="photoCircle" title="Click to upload photo">
-              <input type="file" accept="image/*" id="photoInput" onchange="previewPhoto(this)">
+              <input type="file"  name="profile_photo" accept="image/*" id="photoInput" onchange="previewPhoto(this)">
               <img id="photoPreviewImg" alt="Profile">
               <div class="photo-circle-icon" id="photoIcon">📷</div>
               <div class="photo-circle-label" id="photoLbl">Upload</div>
@@ -496,7 +499,7 @@ body::before{
           <div class="fg fg-3">
             <div class="field">
               <label> Name <span class="req">*</span></label>
-              <input type="text" id="firstName" placeholder="Ramesh" required>
+              <input type="text" id="firstName" name="name" placeholder="Enter full name" required>
               <div class="field-error" id="err-firstName">Please enter first name</div>
             </div>
            
@@ -509,34 +512,34 @@ body::before{
           <div class="fg fg-2">
             <div class="field">
               <label>Date of Birth <span class="req">*</span></label>
-              <input type="date" id="dob" required>
+              <input type="date" id="dob" required name="dob">
               <div class="field-error" id="err-dob">Please enter date of birth</div>
             </div>
             <div class="field">
               <label>Gender <span class="req">*</span></label>
-              <select id="gender" required>
+              <select id="gender" required name="gender">
                 <option value="">Select Gender</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
-                <option>Prefer not to say</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+                <option value="prefer_not_to_say">Prefer not to say</option>
               </select>
               <div class="field-error" id="err-gender">Please select gender</div>
             </div>
             <div class="field">
               <label>Marital Status</label>
-              <select>
+              <select name="marital_status">
                 <option value="">Select</option>
-                <option>Single</option>
-                <option>Married</option>
-                <option>Divorced</option>
-                <option>Widowed</option>
+                <option value="single">Single</option>
+                <option value="married">Married</option>
+                <option value="divorced">Divorced</option>
+                <option value="widowed">Widowed</option>
               </select>
             </div>
             
             <div class="field">
               <label>Nationality</label>
-              <input type="text" value="Indian" placeholder="Indian">
+              <input type="text" value="Indian" placeholder="Indian" name="nationality">
             </div>  
           </div>
         </div>
@@ -545,9 +548,9 @@ body::before{
 
       </div>
       <div class="form-nav">
-        <button class="btn-back" disabled>← Back</button>
+        <button type="button" class="btn-back" disabled>← Back</button>
         <span class="step-counter">Step 1 of 5</span>
-        <button class="btn-next" onclick="goNext(1)">Next →</button>
+        <button  type="button" class="btn-next" onclick="goNext(1)">Next →</button>
       </div>
     </div>
 
@@ -569,25 +572,25 @@ body::before{
             <div class="field">
               <label>Mobile Number <span class="req">*</span></label>
               <div class="phone-wrap">
-                <input class="phone-code" type="tel" value="+91" placeholder="98XXXXXXXX" maxlength="10" id="mobile">
+                <input class="phone-code" type="tel" name="mobile" placeholder="98XXXXXXXX" maxlength="15" id="mobile">
               </div>
               <div class="field-error" id="err-mobile">Please enter valid 10-digit mobile number</div>
             </div>
             <div class="field">
               <label>Alternate Mobile</label>
               <div class="phone-wrap">
-                <input class="phone-code" type="tel" value="+91" maxlength="10">
+                <input class="phone-code" type="tel" name="alternate_mobile"  maxlength="15">
               </div>
             </div>
             <div class="field">
               <label>Email Address <span class="req">*</span></label>
-              <input type="email" id="email" placeholder="name@example.com">
+              <input type="email" id="email" name="email" placeholder="name@example.com">
               <div class="field-error" id="err-email">Please enter valid email</div>
             </div>
             <div class="field">
               <label>WhatsApp Number</label>
               <div class="phone-wrap">
-                <input class="phone-code" type="tel" placeholder="Same as mobile" >
+                <input class="phone-code" type="tel" name="whatsapp" placeholder="Same as mobile" >
               </div>
             </div>
           </div>
@@ -599,36 +602,36 @@ body::before{
           <div class="fg fg-1">
             <div class="field">
               <label>Address Line 1 <span class="req">*</span></label>
-              <input type="text" id="addr1" placeholder="House/Flat No., Street Name">
+              <input type="text" id="addr1" name="addr1" placeholder="House/Flat No., Street Name">
               <div class="field-error" id="err-addr1">Required</div>
             </div>
             <div class="field">
               <label>Address Line 2</label>
-              <input type="text" placeholder="Area / Locality (optional)">
+              <input type="text" name="addr2" placeholder="Area / Locality (optional)">
             </div>
           </div>
           <div class="fg fg-3" style="margin-top:16px;">
             <div class="field">
               <label>City <span class="req">*</span></label>
-              <input type="text" id="city" placeholder="Lucknow">
+              <input type="text" id="city" name="city" placeholder="Lucknow">
               <div class="field-error" id="err-city">Required</div>
             </div>
             <div class="field">
               <label>State <span class="req">*</span></label>
-              <select id="state">
+              <select id="state" name="state">
                 <option value="">Select State</option>
-                <option>Uttar Pradesh</option><option>Delhi</option>
-                <option>Maharashtra</option><option>Bihar</option>
-                <option>Rajasthan</option><option>Madhya Pradesh</option>
-                <option>Gujarat</option><option>West Bengal</option>
-                <option>Tamil Nadu</option><option>Karnataka</option>
-                <option>Other</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option><option value="Delhi">Delhi</option>
+                <option value="Maharashtra">Maharashtra</option><option value="Bihar">Bihar</option>
+                <option value="Rajasthan">Rajasthan</option><option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Gujarat">Gujarat</option><option value="West Bengal">West Bengal</option>
+                <option value="Tamil Nadu">Tamil Nadu</option><option value="Karnataka">Karnataka</option>
+                <option value="Other">Other</option>
               </select>
               <div class="field-error" id="err-state">Required</div>
             </div>
             <div class="field">
               <label>PIN Code <span class="req">*</span></label>
-              <input type="text" id="pin" placeholder="226001" maxlength="6">
+              <input type="text" id="pin" name="pin_no" placeholder="226001" maxlength="6">
               <div class="field-error" id="err-pin">Enter valid 6-digit PIN</div>
             </div>
           </div>
@@ -637,9 +640,9 @@ body::before{
       
       </div>
       <div class="form-nav">
-        <button class="btn-back" onclick="goPrev(2)">← Back</button>
+        <button type="button" class="btn-back" onclick="goPrev(2)">← Back</button>
         <span class="step-counter">Step 2 of 5</span>
-        <button class="btn-next" onclick="goNext(2)">Next →</button>
+        <button type="button" class="btn-next" onclick="goNext(2)">Next →</button>
       </div>
     </div>
 
@@ -660,45 +663,45 @@ body::before{
           <div class="fg fg-2">
             <div class="field">
               <label>Job Role / Designation <span class="req">*</span></label>
-              <select id="jobRole">
+              <select id="jobRole" name="jobRole">
                 <option value="">Select Role</option>
-                <option>Electrician</option><option>Plumber</option>
-                <option>AC Technician</option><option>Carpenter</option>
-                <option>Painter</option><option>Welder</option>
-                <option>Mason</option><option>Cleaner</option>
-                <option>Driver</option><option>Security Guard</option>
-                <option>Cook / Chef</option><option>Babysitter</option>
-                <option>Other</option>
+                <option value="Electrician">Electrician</option><option value="Plumber">Plumber</option>
+                <option value="AC Technician">AC Technician</option><option value="Carpenter">Carpenter</option>
+                <option value="Painter">Painter</option><option value="Welder">Welder</option>
+                <option value="Mason">Mason</option><option value="Cleaner">Cleaner</option>
+                <option value="Driver">Driver</option><option value="Security Guard">Security Guard</option>
+                <option value="Cook / Chef">Cook / Chef</option><option value="Babysitter">Babysitter</option>
+                <option value="Other">Other</option>
               </select>
               <div class="field-error" id="err-jobRole">Required</div>
             </div>
             <div class="field">
               <label>Department</label>
-              <select>
-                <option>Home Services</option><option>Technical</option>
-                <option>Maintenance</option><option>Support Staff</option>
+              <select name="department">
+                <option value="Home Services">Home Services</option><option value="Technical">Technical</option>
+                <option value="Maintenance">Maintenance</option><option value="Support Staff">Support Staff</option>
               </select>
             </div>
             <div class="field">
               <label>Employment Type <span class="req">*</span></label>
-              <select id="empType">
+              <select id="empType" name="empType">
                 <option value="">Select</option>
-                <option>Full Time</option><option>Part Time</option>
-                <option>Contract</option><option>Freelancer</option>
+                <option value="Full Time">Full Time</option><option value="Part Time">Part Time</option>
+                <option value="Contract">Contract</option><option value="Freelancer">Freelancer</option>
               </select>
               <div class="field-error" id="err-empType">Required</div>
             </div>
             <div class="field">
               <label>Joining Date</label>
-              <input type="date" id="joinDate">
+              <input type="date" id="joinDate" name="joinDate">
             </div>
             <div class="field">
               <label>Expected Salary (₹/month)</label>
-              <input type="number" placeholder="e.g. 15000" min="0">
+              <input type="number" placeholder="e.g. 15000" min="0" name="expectedSalary">
             </div>
             <div class="field">
               <label>Work Location</label>
-              <input type="text" placeholder="City or Area">
+              <input type="text" placeholder="City or Area" name="workLocation">
             </div>
           </div>
         </div>
@@ -709,21 +712,21 @@ body::before{
           <div class="fg fg-3">
             <div class="field">
               <label>Highest Qualification</label>
-              <select>
+              <select name="highestQualification">
                 <option value="">Select</option>
-                <option>10th Pass</option><option>12th Pass</option>
-                <option>ITI</option><option>Diploma</option>
-                <option>Graduate</option><option>Post Graduate</option>
-                <option>No Formal Education</option>
+                <option value="10th Pass">10th Pass</option><option value="12th Pass">12th Pass</option>
+                <option value="ITI">ITI</option><option value="Diploma">Diploma</option>
+                <option value="Graduate">Graduate</option><option value="Post Graduate">Post Graduate</option>
+                <option value="No Formal Education">No Formal Education</option>
               </select>
             </div>
             <div class="field">
               <label>Specialisation / Stream</label>
-              <input type="text" placeholder="e.g. Electrical, Commerce">
+              <input type="text" placeholder="e.g. Electrical, Commerce" name="specialisation">
             </div>
             <div class="field">
               <label>Year of Passing</label>
-              <input type="number" placeholder="2020" min="1980" max="2030">
+              <input type="number" placeholder="2020" min="1980" max="2030" name="yearOfPassing">
             </div>
           </div>
         </div>
@@ -734,22 +737,25 @@ body::before{
           <div class="fg fg-2">
             <div class="field">
               <label>Total Experience</label>
-              <select>
-                <option>Fresher (0 years)</option>
-                <option>Less than 1 year</option>
-                <option>1–2 years</option><option>2–5 years</option>
-                <option>5–10 years</option><option>10+ years</option>
+              <select name="totalExperience">
+                <option value="">Select</option>
+                <option value="Fresher (0 years)">Fresher (0 years)</option>
+                <option value="Less than 1 year">Less than 1 year</option>
+                <option value="1-2 years">1–2 years</option>
+                <option value="2-5 years">2–5 years</option>
+                <option value="5-10 years">5–10 years</option>
+                <option value="10+ years">10+ years</option>
               </select>
             </div>
             <div class="field">
               <label>Previous Employer</label>
-              <input type="text" placeholder="Company / Individual Name">
+              <input type="text" placeholder="Company / Individual Name" name="previousEmployer">
             </div>
           </div>
           <div class="fg fg-1" style="margin-top:16px;">
             <div class="field">
               <label>Brief Work Description</label>
-              <textarea placeholder="Describe your previous work experience, duties performed, etc."></textarea>
+              <textarea placeholder="Describe your previous work experience, duties performed, etc. (optional)" name="workDescription"></textarea>
             </div>
           </div>
         </div>
@@ -758,21 +764,21 @@ body::before{
         <div class="form-section">
           <div class="section-title">Skills &amp; Expertise</div>
           <div class="check-group" id="skillCheckGroup">
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><div class="check-dot"></div>AC Repair</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><div class="check-dot"></div>Electrical Wiring</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><div class="check-dot"></div>Plumbing</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><div class="check-dot"></div>Carpentry</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><div class="check-dot"></div>Painting</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><div class="check-dot"></div>Welding</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><div class="check-dot"></div>Tiling</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><div class="check-dot"></div>Cooking</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><div class="check-dot"></div>Driving</label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" name="skills[]"><div class="check-dot"></div>AC Repair</label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" name="skills[]"><div class="check-dot"></div>Electrical Wiring</label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" name="skills[]"><div class="check-dot"></div>Plumbing</label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" name="skills[]"><div class="check-dot"></div>Carpentry</label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" name="skills[]"><div class="check-dot"></div>Painting</label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" name="skills[]"><div class="check-dot"></div>Welding</label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" name="skills[]"><div class="check-dot"></div>Tiling</label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" name="skills[]"><div class="check-dot"></div>Cooking</label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" name="skills[]"><div class="check-dot"></div>Driving</label>
           </div>
           <div style="margin-top:14px;">
             <div class="field">
               <label>Add Custom Skill</label>
               <div class="skill-input-wrap">
-                <input type="text" id="customSkillInput" placeholder="e.g. Solar Panel Installation" onkeydown="if(event.key==='Enter'){addSkill();event.preventDefault();}">
+                <input type="text" name="skills[]" id="customSkillInput" placeholder="e.g. Solar Panel Installation" onkeydown="if(event.key==='Enter'){addSkill();event.preventDefault();}">
                 <button class="add-skill-btn" onclick="addSkill()">+ Add</button>
               </div>
             </div>
@@ -784,22 +790,22 @@ body::before{
         <div class="form-section">
           <div class="section-title">Languages Known</div>
           <div class="check-group">
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><div class="check-dot"></div>Hindi</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><div class="check-dot"></div>English</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><div class="check-dot"></div>Urdu</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><div class="check-dot"></div>Bengali</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><div class="check-dot"></div>Marathi</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><div class="check-dot"></div>Punjabi</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><div class="check-dot"></div>Tamil</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><div class="check-dot"></div>Telugu</label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" name="languages[]"><div class="check-dot"></div>Hindi</label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" name="languages[]"><div class="check-dot"></div>English</label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" name="languages[]"><div class="check-dot"></div>Urdu</label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" name="languages[]"><div class="check-dot"></div>Bengali</label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" name="languages[]"><div class="check-dot"></div>Marathi</label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" name="languages[]"><div class="check-dot"></div>Punjabi</label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" name="languages[]"><div class="check-dot"></div>Tamil</label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" name="languages[]"><div class="check-dot"></div>Telugu</label>
           </div>
         </div>
 
       </div>
       <div class="form-nav">
-        <button class="btn-back" onclick="goPrev(3)">← Back</button>
+        <button type="button" class="btn-back" onclick="goPrev(3)">← Back</button>
         <span class="step-counter">Step 3 of 5</span>
-        <button class="btn-next" onclick="goNext(3)">Next →</button>
+        <button type="button" class="btn-next" onclick="goNext(3)">Next →</button>
       </div>
     </div>
 
@@ -821,7 +827,7 @@ body::before{
             <div class="field">
               <label>Aadhar Card (Front) <span class="req">*</span></label>
               <div class="upload-box" id="box-aadharF" ondragover="dragOver(event,this)" ondragleave="dragLeave(this)" ondrop="dropFile(event,'aadharF')">
-                <input type="file" accept="image/*,.pdf" onchange="fileSelected(this,'aadharF')">
+                <input type="file" accept="image/*,.pdf" name="aadharF"  onchange="fileSelected(this,'aadharF')">
                 <div class="upload-icon">🪪</div>
                 <div class="upload-label">Click or drag to upload</div>
                 <div class="upload-sub">JPG, PNG or PDF · Max 5MB</div>
@@ -835,7 +841,7 @@ body::before{
             <div class="field">
               <label>Aadhar Card (Back) <span class="req">*</span></label>
               <div class="upload-box" id="box-aadharB" ondragover="dragOver(event,this)" ondragleave="dragLeave(this)" ondrop="dropFile(event,'aadharB')">
-                <input type="file" accept="image/*,.pdf" onchange="fileSelected(this,'aadharB')">
+                <input type="file" accept="image/*,.pdf" name="aadharB" onchange="fileSelected(this,'aadharB')">
                 <div class="upload-icon">🪪</div>
                 <div class="upload-label">Click or drag to upload</div>
                 <div class="upload-sub">JPG, PNG or PDF · Max 5MB</div>
@@ -849,7 +855,7 @@ body::before{
             <div class="field">
               <label>PAN Card</label>
               <div class="upload-box" id="box-pan" ondragover="dragOver(event,this)" ondragleave="dragLeave(this)" ondrop="dropFile(event,'pan')">
-                <input type="file" accept="image/*,.pdf" onchange="fileSelected(this,'pan')">
+                <input type="file" accept="image/*,.pdf" name="pan" onchange="fileSelected(this,'pan')">
                 <div class="upload-icon">💳</div>
                 <div class="upload-label">Click or drag to upload</div>
                 <div class="upload-sub">JPG, PNG or PDF · Max 5MB</div>
@@ -863,7 +869,7 @@ body::before{
             <div class="field">
               <label>Voter ID / Driving License</label>
               <div class="upload-box" id="box-voterId" ondragover="dragOver(event,this)" ondragleave="dragLeave(this)" ondrop="dropFile(event,'voterId')">
-                <input type="file" accept="image/*,.pdf" onchange="fileSelected(this,'voterId')">
+                <input type="file" accept="image/*,.pdf" name="voterId" onchange="fileSelected(this,'voterId')">
                 <div class="upload-icon">🗳️</div>
                 <div class="upload-label">Click or drag to upload</div>
                 <div class="upload-sub">JPG, PNG or PDF · Max 5MB</div>
@@ -884,7 +890,7 @@ body::before{
             <div class="field">
               <label>Resume / CV <span class="req">*</span></label>
               <div class="upload-box" id="box-resume" ondragover="dragOver(event,this)" ondragleave="dragLeave(this)" ondrop="dropFile(event,'resume')">
-                <input type="file" accept=".pdf,.doc,.docx" onchange="fileSelected(this,'resume')">
+                <input type="file" accept=".pdf,.doc,.docx" name="resume" onchange="fileSelected(this,'resume')">
                 <div class="upload-icon">📝</div>
                 <div class="upload-label">Click or drag to upload</div>
                 <div class="upload-sub">PDF or Word Doc · Max 10MB</div>
@@ -898,7 +904,7 @@ body::before{
             <div class="field">
               <label>Experience Certificate</label>
               <div class="upload-box" id="box-expCert" ondragover="dragOver(event,this)" ondragleave="dragLeave(this)" ondrop="dropFile(event,'expCert')">
-                <input type="file" accept="image/*,.pdf" onchange="fileSelected(this,'expCert')">
+                <input type="file" accept="image/*,.pdf" name="expCert" onchange="fileSelected(this,'expCert')">
                 <div class="upload-icon">🏅</div>
                 <div class="upload-label">Click or drag to upload</div>
                 <div class="upload-sub">JPG, PNG or PDF · Max 5MB</div>
@@ -912,7 +918,7 @@ body::before{
             <div class="field">
               <label>Educational Certificate</label>
               <div class="upload-box" id="box-eduCert" ondragover="dragOver(event,this)" ondragleave="dragLeave(this)" ondrop="dropFile(event,'eduCert')">
-                <input type="file" accept="image/*,.pdf" onchange="fileSelected(this,'eduCert')">
+                <input type="file" accept="image/*,.pdf" name="eduCert" onchange="fileSelected(this,'eduCert')">
                 <div class="upload-icon">🎓</div>
                 <div class="upload-label">Click or drag to upload</div>
                 <div class="upload-sub">JPG, PNG or PDF · Max 5MB</div>
@@ -926,7 +932,7 @@ body::before{
             <div class="field">
               <label>Skill / Trade Certificate</label>
               <div class="upload-box" id="box-skillCert" ondragover="dragOver(event,this)" ondragleave="dragLeave(this)" ondrop="dropFile(event,'skillCert')">
-                <input type="file" accept="image/*,.pdf" onchange="fileSelected(this,'skillCert')">
+                <input type="file" accept="image/*,.pdf" name="skillCert" onchange="fileSelected(this,'skillCert')">
                 <div class="upload-icon">🛠️</div>
                 <div class="upload-label">Click or drag to upload</div>
                 <div class="upload-sub">JPG, PNG or PDF · Max 5MB</div>
@@ -942,9 +948,9 @@ body::before{
 
       </div>
       <div class="form-nav">
-        <button class="btn-back" onclick="goPrev(4)">← Back</button>
+        <button type="button" btn-back" onclick="goPrev(4)">← Back</button>
         <span class="step-counter">Step 4 of 5</span>
-        <button class="btn-next" onclick="goNext(4)">Next →</button>
+        <button type="button" class="btn-next" onclick="goNext(4)">Next →</button>
       </div>
     </div>
 
@@ -965,11 +971,7 @@ body::before{
           <div class="field">
             <label>12-digit Aadhar Number <span class="req">*</span></label>
             <div class="aadhar-wrap">
-              <input class="aadhar-part" type="text" id="aadhar1" maxlength="4" placeholder="XXXX" oninput="aadharNext(this,'aadhar2')">
-              <span class="aadhar-sep">–</span>
-              <input class="aadhar-part" type="text" id="aadhar2" maxlength="4" placeholder="XXXX" oninput="aadharNext(this,'aadhar3')">
-              <span class="aadhar-sep">–</span>
-              <input class="aadhar-part" type="text" id="aadhar3" maxlength="4" placeholder="XXXX">
+              <input class="aadhar-part" type="text" id="aadhar1" maxlength="12" placeholder="Enter aadhar number" oninput="aadharNext(this,'aadhar2')">
             </div>
             <div class="field-hint">🔒 This information is encrypted and securely stored</div>
             <div class="field-error" id="err-aadhar">Please enter valid 12-digit Aadhar number</div>
@@ -982,7 +984,7 @@ body::before{
           <div class="fg fg-2">
             <div class="field">
               <label>PAN Number</label>
-              <input type="text" id="panNo" placeholder="ABCDE1234F" maxlength="10" style="letter-spacing:2px;font-weight:600;text-transform:uppercase;">
+              <input type="text" id="panNo" name="pan_no" placeholder="ABCDE1234F" maxlength="10" style="letter-spacing:2px;font-weight:600;text-transform:uppercase;">
               <div class="field-hint">Format: ABCDE1234F</div>
             </div>
           </div>
@@ -994,50 +996,50 @@ body::before{
           <div class="fg fg-2">
             <div class="field">
               <label>Account Holder Name <span class="req">*</span></label>
-              <input type="text" id="accName" placeholder="As per bank records">
+              <input type="text" id="accName" name="accName" placeholder="As per bank records">
               <div class="field-error" id="err-accName">Required</div>
             </div>
             <div class="field">
               <label>Bank Name <span class="req">*</span></label>
-              <select id="bankName">
+              <select id="bankName" name="bankName">
                 <option value="">Select Bank</option>
-                <option>State Bank of India</option>
-                <option>Punjab National Bank</option>
-                <option>Bank of Baroda</option>
-                <option>Canara Bank</option>
-                <option>HDFC Bank</option>
-                <option>ICICI Bank</option>
-                <option>Axis Bank</option>
-                <option>Kotak Mahindra Bank</option>
-                <option>Yes Bank</option>
-                <option>Union Bank of India</option>
-                <option>Bank of India</option>
-                <option>Other</option>
+                <option value="SBI">State Bank of India</option>
+                <option value="PNB">Punjab National Bank</option>
+                <option value="BOB">Bank of Baroda</option>
+                <option value="CANARA">Canara Bank</option>
+                <option value="HDFC">HDFC Bank</option>
+                <option value="ICICI">ICICI Bank</option>
+                <option value="AXIS">Axis Bank</option>
+                <option value="KOTAK">Kotak Mahindra Bank</option>
+                <option value="YES">Yes Bank</option>
+                <option value="UNION">Union Bank of India</option>
+                <option value="BANK_OF_INDIA">Bank of India</option>
+                <option value="OTHER">Other</option>
               </select>
               <div class="field-error" id="err-bankName">Required</div>
             </div>
             <div class="field">
               <label>Account Number <span class="req">*</span></label>
-              <input type="text" id="accNo" placeholder="Enter account number" maxlength="18">
+              <input type="text" id="accNo" name="accNo" placeholder="Enter account number" maxlength="18">
               <div class="field-error" id="err-accNo">Required</div>
             </div>
             <div class="field">
               <label>Confirm Account Number <span class="req">*</span></label>
-              <input type="text" id="accNoConfirm" placeholder="Re-enter account number" maxlength="18">
+              <input type="text" id="accNoConfirm" name="accNoConfirm" placeholder="Re-enter account number" maxlength="18">
               <div class="field-error" id="err-accNoConfirm">Numbers do not match</div>
             </div>
             <div class="field">
               <label>IFSC Code <span class="req">*</span></label>
-              <input type="text" id="ifsc" placeholder="SBIN0001234" maxlength="11" style="letter-spacing:1.5px;text-transform:uppercase;">
+              <input type="text" id="ifsc" name="ifsc" placeholder="SBIN0001234" maxlength="11" style="letter-spacing:1.5px;text-transform:uppercase;">
               <div class="field-hint">11-character code (e.g. SBIN0001234)</div>
               <div class="field-error" id="err-ifsc">Enter valid IFSC code</div>
             </div>
             <div class="field">
               <label>Account Type</label>
-              <select>
-                <option>Savings Account</option>
-                <option>Current Account</option>
-                <option>Jan Dhan Account</option>
+              <select name="accountType">
+                <option value="savings_a/c">Savings Account</option>
+                <option value="current_a/c">Current Account</option>
+                <option value="jan_dhan_a/c">Jan Dhan Account</option>
               </select>
             </div>
           </div>
@@ -1045,9 +1047,9 @@ body::before{
             <div class="field">
               <label>Passbook / Cancelled Cheque</label>
               <div class="upload-box" id="box-passbook" ondragover="dragOver(event,this)" ondragleave="dragLeave(this)" ondrop="dropFile(event,'passbook')">
-                <input type="file" accept="image/*,.pdf" onchange="fileSelected(this,'passbook')">
+                <input type="file" accept="image/*,.pdf" name="passbook" onchange="fileSelected(this,'passbook')">
                 <div class="upload-icon">🏦</div>
-                <div class="upload-label">Upload passbook front page or cancelled cheque</div>
+                <div class="upload-label">Upload passbook front page or   cancelled cheque</div>
                 <div class="upload-sub">JPG, PNG or PDF · Max 5MB</div>
               </div>
               <div class="upload-preview" id="prev-passbook">
@@ -1068,7 +1070,7 @@ body::before{
             </p>
           </div>
           <label class="check-item" id="declarationLabel" onclick="toggleCheck(this)" style="width:100%;">
-            <input type="checkbox" id="declarationCheck">
+            <input type="checkbox" id="declarationCheck" name="declarationCheck">
             <div class="check-dot"></div>
             I agree to the above declaration and Besic Seva's Terms of Service &amp; Privacy Policy
           </label>
@@ -1077,11 +1079,12 @@ body::before{
 
       </div>
       <div class="form-nav">
-        <button class="btn-back" onclick="goPrev(5)">← Back</button>
+        <button type="button" class="btn-back" onclick="goPrev(5)">← Back</button>
         <span class="step-counter">Step 5 of 5</span>
-        <button class="btn-next" onclick="submitForm()" style="background:linear-gradient(135deg,#0f6b30,#2eaa63);">
+        <input  type="submit" name="submit" class="btn-next" onclick="submitForm()"
+         style="background:linear-gradient(135deg,#0f6b30,#2eaa63);">
           ✅ Submit Registration
-        </button>
+        
       </div>
     </div>
 
@@ -1097,11 +1100,14 @@ body::before{
       <p style="font-size:13px;color:var(--ink4);margin-bottom:20px;">
         A confirmation will be sent to the registered mobile number.
       </p>
-      <button class="restart-btn" onclick="restartForm()">+ Register Another Employee</button>
+      <button type="reset" class="restart-btn" onclick="restartForm()">+ Register Another Employee</button>
     </div>
 
   </div><!-- /form-card -->
-</div><!-- /container -->
+</div>
+</form>
+<!-- /container -->
+
 
 <script>
 let currentStep = 1;

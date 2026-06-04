@@ -386,15 +386,11 @@
 </div>
 
 <script>
-    // ------------------------------
-    // MOCK DATABASE (simulated localStorage)
-    // Each document stores base64 content for preview/download demo
-    // For real files, we generate dataURL for images and text, for PDF we simulate.
-    // ------------------------------
+    
     let documents = [];
     let nextId = 6;
 
-    // Helper to generate dummy base64 for demonstration (image placeholder + text)
+    
     function generatePreviewContent(fileName, type, docName) {
         // For preview we show rich info and if image we embed dummy, for PDF we give info
         if (fileName && fileName.match(/\.(jpg|jpeg|png)$/i)) {

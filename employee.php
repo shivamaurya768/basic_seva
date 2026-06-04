@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once "db_conn.php";
+    require "db_conn.php";
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +39,7 @@
          <?php
             if(isset($_SESSION['username'])){
             // Fetch image from database
-                $query = $conn->prepare("SELECT image_profile FROM logins WHERE username=?");
+                $query = $conn->prepare("SELECT image_profile FROM employees WHERE username=?");
                 $query->execute([$_SESSION['username']]);
                 $result = $query->fetch(PDO::FETCH_ASSOC);
             }
@@ -57,7 +57,15 @@
       <div class="profile-info">
         <div class="profile-name">
           <?php
-            if(isset($_SESSION['name'])){
+            if(isset($_SESSION['usename'])){
+            $query = $conn->prepare("SELECT names FROM employees WHERE username=?");
+            $query->execute([$_SESSION['username']]);
+            $result = $query->fetch(PDO::FETCH_ASSOC);             
+            }
+
+            if(!empty($result['names'])) {
+                echo $result['names'];
+            }else if(isset($_SESSION['name'])){
               echo $_SESSION['name'];
             }
             else{
@@ -145,7 +153,7 @@
         <?php
             if(isset($_SESSION['username'])){
             // Fetch image from database
-                $query = $conn->prepare("SELECT image_profile FROM logins WHERE username=?");
+                $query = $conn->prepare("SELECT image_profile FROM employees WHERE username=?");
                 $query->execute([$_SESSION['username']]);
                 $result = $query->fetch(PDO::FETCH_ASSOC);
             }
@@ -161,7 +169,16 @@
       <div class="hero-info">
         <div class="hero-name">
           <?php
-          if(isset($_SESSION['name'])){
+            if(isset($_SESSION['usename'])){
+            $query = $conn->prepare("SELECT names FROM employees WHERE username=?");
+            $query->execute([$_SESSION['username']]);
+            $result = $query->fetch(PDO::FETCH_ASSOC);             
+            }
+
+            if(!empty($result['names'])) {
+                echo $result['names'];
+            }
+            else if(isset($_SESSION['name'])){
               echo $_SESSION['name'];
             }
             else{
@@ -487,6 +504,8 @@
 <div class="Myjob">
     <?php include "employeeTab/Myjob.php"; ?>
 </div>
+
+
 <div class="earning">
     <?php include "employeeTab/Earning.php"; ?>
 </div>
